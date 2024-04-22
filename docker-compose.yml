@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres
+    container_name: db
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    container_name: web
+    build:
+      context: ../demo-project-web
+      dockerfile: Dockerfile.dev
+    environment:
+      - PORT=80
+      - NODE_ENV=development
+    volumes:
+      - ../demo-project-web/src:/opt/app/src
+      - ../demo-project-web/public:/opt/app/public
+    ports:
+      - "3000:80"
