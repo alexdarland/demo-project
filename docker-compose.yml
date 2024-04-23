@@ -16,8 +16,21 @@ services:
     environment:
       - PORT=80
       - NODE_ENV=development
+      - GRAPHQL_URL=http://graphql:8080/graphql
     volumes:
       - ../demo-project-web/src:/opt/app/src
       - ../demo-project-web/public:/opt/app/public
     ports:
       - "3000:80"
+    depends_on:
+      - graphql
+  graphql:
+    container_name: graphql
+    build:
+      context: ../demo-project-graphql
+      dockerfile: Dockerfile.dev
+    environment:
+      - PORT=8080
+    volumes:
+      - ../demo-project-graphql/src:/opt/app/src
+    command: nodemon -e ts,js,json --exec babel-node src/server/index.ts --extensions .js,.ts,.json
