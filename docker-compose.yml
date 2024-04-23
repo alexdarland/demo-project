@@ -31,6 +31,7 @@ services:
       dockerfile: Dockerfile.dev
     environment:
       - PORT=8080
+      - OPENAI_API_KEY
     volumes:
       - ../demo-project-graphql/src:/opt/app/src
     command: nodemon -e ts,js,json --exec babel-node src/server/index.ts --extensions .js,.ts,.json
