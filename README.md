@@ -8,6 +8,7 @@ Main repository for local development
 
 - Docker
 - Docker compose
+- Make
 
 ### Add environment variables
 
@@ -17,7 +18,20 @@ This application uses OpenAI and requires secret keys to be specified in the env
     OPENAI_API_KEY='contact-me-for-key'
 ```
 
+### Clone repos
+
+Navigate to the root folder of this project and type `make`. This will download all related projects.
+
+### Start the development environment
+
+While in the project root folder, type `docker compose up --detach --build`
+
 ## Useful links for this project
+
+### Environment
+
+- [localhost:3000](http://localhost:3000)
+- [localhost:3000/graphql](http://localhost:3000/graphql)
 
 ### Repositories
 
